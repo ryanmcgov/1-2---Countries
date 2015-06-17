@@ -9,19 +9,16 @@ exclusion_words = ['and', 'of', 'the']
 File.open(file_name, "r").each do |line|
   new_file_arr.push(line)
 end
-
 new_file_index = 0
 new_file_arr.each do |line|
-  line.gsub!(' | ', ' - ')
-  file_line = line.split(' ')
-
+  line.gsub!("|", "-")
+  file_line = line.split(" ")
   index = 0
   file_line.each do |word|
     unless exclusion_words.include?(word)
       word.capitalize!
     end
-
-    line = file_line.join(' ')
+    line = file_line.join(" ")
     new_file_arr[new_file_index] = line
     index += 1
   end
