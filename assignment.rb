@@ -13,7 +13,6 @@ end
 new_file_index = 0
 new_file_arr.each do |line|
   line.gsub!(' | ', ' - ')
-
   file_line = line.split(' ')
 
   index = 0
@@ -30,6 +29,7 @@ new_file_arr.each do |line|
   new_file_index += 1
 end
 
+##Writes to new file.  Works correctly
 # File.new("updated_#{file_name}", "w+")
 # File.open("updated_#{file_name}", "w+") do |write|
 #   write.puts(new_file_arr)
