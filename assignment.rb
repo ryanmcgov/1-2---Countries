@@ -11,29 +11,30 @@ File.open(file_name, "r").each do |line|
 end
 new_file_index = 0
 new_file_arr.each do |line|
-  line.gsub!("|", "-")
+  line.gsub!("|", " - ")
   file_line = line.split(" ")
   index = 0
   file_line.each do |word|
     unless exclusion_words.include?(word)
       word.capitalize!
     end
+    file_line[0].upcase!
     line = file_line.join(" ")
     new_file_arr[new_file_index] = line
+    
     index += 1
   end
-  new_file_arr[0].upcase!
   new_file_index += 1
 end
 
 ##Writes to new file.  Works correctly
-# File.new("updated_#{file_name}", "w+")
-# File.open("updated_#{file_name}", "w+") do |write|
-#   write.puts(new_file_arr)
-# end
+File.new("updated_#{file_name}", "w+")
+File.open("updated_#{file_name}", "w+") do |write|
+  write.puts(new_file_arr)
+end
 
+puts "There are #{new_file_arr.length}countries accounted for here. They are as follows:"
 new_file_arr.each { |line| puts line }
 
-puts "Number of countries is #{new_file_arr.length}"
 
 
